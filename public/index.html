@@ -1,136 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kelvin's Arcade</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" />
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #000;
-      color: white;
-      font-family: 'Orbitron', sans-serif;
-      overflow: hidden;
-    }
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    .container {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    h1 {
-      margin-bottom: 30px;
-      font-size: 2.5rem;
-      color: #00ffff;
-      text-shadow: 0 0 10px #00ffff;
-    }
-
-    .input-group {
-      max-width: 600px;
-      width: 100%;
-    }
-
-    .btn {
-      min-width: 80px;
-    }
-
-    input {
-      background-color: rgba(255,255,255,0.1);
-      color: white;
-      border: 1px solid #444;
-    }
-
-    input::placeholder {
-      color: #aaa;
-    }
-  </style>
+    <title>Kelvin's Arcade</title>
 </head>
+
 <body>
-  <div id="particles-js"></div>
-  <div class="container text-center">
-    <h1>Kelvin's Arcade</h1>
-    <div class="input-group">
-      <input type="text" class="form-control" id="session-url" placeholder="Enter a URL to visit" />
-      <div class="input-group-append">
-        <button class="btn btn-info" id="session-go">Go!</button>
-      </div>
+    <header>
+        <img src="logo.png" />
+        <h1>Kelvin's Arcade</h1>
+    </header>
+            </div>
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Enter URL</span>
+            </div>
+            <input type="text" class="form-control" id="session-url" placeholder="https://www.google.com/">
+            <div class="input-group-append">
+                <button class="btn btn-success" id="session-go">Go!</button>
+            </div>
+        </div>
+        <div class="input-group mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Session ID</span>
+            </div>
+            </div>
+        </div>
+        <button class="btn btn-outline-secondary" id="session-advanced-toggle">Show advanced options</button>
+        <div class="mt-2 mb-4" id="session-advanced-container" style="display: none">
+            <div class="form-check mb-1">
+                <input class="form-check-input" type="checkbox" value="" id="session-shuffling" checked>
+                <label class="form-check-label" for="session-shuffling">Enable URL Shuffling</label>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">HTTP Proxy</span>
+                </div>
+                <input type="text" class="form-control" id="session-httpproxy"
+                    placeholder="http://username:password@proxyipaddress:proxyport">
+            </div>
+        </div>
     </div>
-  </div>
-
-  <script>
-    document.getElementById("session-go").addEventListener("click", function () {
-      const url = document.getElementById("session-url").value.trim();
-      if (url) {
-        window.location.href = "/service/" + encodeURIComponent(url);
-      }
-    });
-  </script>
-
-  <!-- Particles.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 90, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#00ffff" },
-        "shape": {
-          "type": "circle",
-          "stroke": { "width": 0, "color": "#000" }
-        },
-        "opacity": {
-          "value": 0.5,
-          "random": true,
-          "anim": { "enable": false }
-        },
-        "size": {
-          "value": 3,
-          "random": true,
-          "anim": { "enable": false }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#00ffff",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 2,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" }
-        },
-        "modes": {
-          "repulse": { "distance": 100 },
-          "push": { "particles_nb": 4 }
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
+    <div class="row justify-content-center m-0">
+        <table class="table w-75 table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Session ID</th>
+                    <th>Created on</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>
